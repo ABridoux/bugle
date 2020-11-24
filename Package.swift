@@ -5,15 +5,19 @@ import PackageDescription
 
 let package = Package(
     name: "Bugle",
+    platforms: [.macOS("10.13")],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "Bugle",
             targets: ["Bugle"]),
+        .executable(
+            name: "BugleCLT",
+            targets: ["BugleCLT"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "0.3.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -21,8 +25,14 @@ let package = Package(
         .target(
             name: "Bugle",
             dependencies: []),
+        .target(
+            name: "BugleCLT",
+            dependencies: [
+                "Bugle",
+                .product(name: "ArgumentParser", package: "swift-argument-parser")])
+        ,
         .testTarget(
             name: "BugleTests",
-            dependencies: ["Bugle"]),
+            dependencies: ["Bugle"])
     ]
 )
