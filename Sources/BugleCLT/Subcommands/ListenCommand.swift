@@ -9,7 +9,7 @@ import ArgumentParser
 
 struct ListenCommand: ParsableCommand {
 
-    static let configuration = CommandConfiguration(commandName: "listen")
+    static let configuration = CommandConfiguration(commandName: "listen", abstract: "Start listening the observations in the observations file")
 
     @Argument(help: "The observations file URL", completion: .file())
     var filePath: String

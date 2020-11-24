@@ -9,6 +9,9 @@ import ArgumentParser
 struct BugleCommand: ParsableCommand {
 
     static let configuration = CommandConfiguration(commandName: "bugle",
+                                                    abstract: "A tool to post and listen to distributed notifications",
                                                     subcommands: [PostNotificationCommand.self,
-                                                                  ListenCommand.self])
+                                                                  ListenCommand.self,
+                                                                  AddCommand.self,
+                                                                  RemoveCommand.self])
 }

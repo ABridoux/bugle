@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// Functions to post notifications
 public enum PostService {
 
     static var center = DistributedNotificationCenter.default

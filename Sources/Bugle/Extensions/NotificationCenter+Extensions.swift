@@ -5,17 +5,19 @@
 
 import Foundation
 
+public typealias NotificationName = NSNotification.Name
+
 extension NotificationCenter {
 
-    func post(_ notificationName: NSNotification.Name) {
+    func post(_ notificationName: NotificationName) {
         post(name: notificationName, object: nil)
     }
 
-    func addObserver(for notificationName: NSNotification.Name, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
+    func addObserver(for notificationName: NotificationName, using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
         addObserver(forName: notificationName, object: nil, queue: nil, using: block)
     }
 
-    func removeObserver(_ observer: NSObjectProtocol, name: NSNotification.Name) {
+    func removeObserver(_ observer: NSObjectProtocol, name: NotificationName) {
         removeObserver(observer, name: name, object: nil)
     }
 }

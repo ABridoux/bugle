@@ -10,7 +10,7 @@ struct PostNotificationCommand: ParsableCommand {
 
     // MARK: - Contants
 
-    static let configuration = CommandConfiguration(commandName: "post")
+    static let configuration = CommandConfiguration(commandName: "post", abstract: "Post a distributed notification")
 
     // MARK: - Properties
 

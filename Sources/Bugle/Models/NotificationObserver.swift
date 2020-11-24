@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// Handle the logic to add and remove an observer to/from the `DistributedNotificationCenter`
 final class NotificationObserver {
 
     var name: Notification.Name

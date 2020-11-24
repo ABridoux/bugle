@@ -33,6 +33,6 @@ let package = Package(
         ,
         .testTarget(
             name: "BugleTests",
-            dependencies: ["Bugle"]),
+            dependencies: ["Bugle"])
     ]
 )

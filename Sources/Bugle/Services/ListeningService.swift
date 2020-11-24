@@ -5,17 +5,14 @@
 
 import Foundation
 
+/// Start a `RunLoop` to listen to notifications
 public final class ListeningService {
 
     var manager: ObserversManager?
-    static let shared = ListeningService()
-
-    deinit {
-        print("Listen deinit")
-    }
+    private static let current = ListeningService()
 
     public static func start(with manager: ObserversManager) {
-        shared.manager = manager
+        current.manager = manager
         RunLoop.current.run()
     }
 }
