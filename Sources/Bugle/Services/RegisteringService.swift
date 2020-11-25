@@ -11,8 +11,12 @@ public typealias Observations = [String: [String]]
 public enum RegisteringService {
 
     public static func loadObservers(from fileURL: URL) throws -> Observations {
-        let data = try Data(contentsOf: fileURL)
-        return try PropertyListDecoder().decode(Observations.self, from: data)
+        if try createNewFile(at: fileURL) {
+            return Observations()
+        } else {
+            let data = try Data(contentsOf: fileURL)
+            return try PropertyListDecoder().decode(Observations.self, from: data)
+        }
     }
 
     static func store(_ observations: Observations, to fileURL: URL) throws {
@@ -43,5 +47,15 @@ public enum RegisteringService {
         }
 
         try store(observations, to: fileURL)
+    }
+
+    /// Create a file at the given url if no file exits
+    /// - Returns: `true` if a file was created
+    static func createNewFile(at url: URL) throws -> Bool {
+        let fileManager = FileManager.default
+        guard !fileManager.fileExists(atPath: url.path) else { return false }
+
+        fileManager.createFile(atPath: url.path, contents: nil)
+        return true
     }
 }
