@@ -14,10 +14,16 @@ struct PostNotificationCommand: ParsableCommand {
 
     // MARK: - Properties
 
-    @Argument
+    @Option(name: [.short, .long], help: "A specific domain to register the  notification", completion: .custom(listDomainNames))
+    var domain: Domain?
+
+    @Option(name: [.short], help: "The notification to observe", completion: .custom(listDomainNotifications))
     var notificationName: String
 
+    // MARK: - Functions
+
     func run() throws {
-        PostService.post(notificationName)
+        let name = try notification(for: notificationName, in: domain)
+        PostService.post(name)
     }
 }

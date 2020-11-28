@@ -48,7 +48,7 @@ bugle remove -n UserDidFallAsleep -s /Users/homer/Desktop/ring.sh -f UserObserva
 To start listening to notifications, run `bugle listen` with the observations file.
 
 ```bash
-bugle listen UserObservations.plist
+bugle listen -f UserObservations.plist
 ```
 
 ### Post
@@ -56,8 +56,12 @@ bugle listen UserObservations.plist
 It's also possible to post notifications, whether it be to test the scripts execution or for another purpose.
 
 ```bash
-bugle post UserDidFallAsleep
+bugle post -n UserDidFallAsleep
 ```
+
+## Script
+
+It is required to add a shebang at the beginning of the script file.
 
 ## Install
 
