@@ -1,0 +1,34 @@
+{
+  "reverseDNS": "com.apple.KerberosPlugin",
+  "referenceURL": "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf",
+  "notifications": [
+    {
+      "name": "ConnectionCompleted",
+      "details": "The Kerberos SSO extension has run its connection process."
+    },
+    {
+      "name": "ADPasswordChanged",
+      "details": "The user has changed the Active Directory password with the extension"
+    },
+    {
+      "name": "LocalPasswordSynced",
+      "details": "The user has brought the Active Directory and local passwords in sync."
+    },
+    {
+      "name": "InternalNetworkAvailable",
+      "details": "The user has connected to a network where the configured Active Directory domain is available."
+    },
+    {
+      "name": "InternalNetworkNotAvailable",
+      "details": "The user has connected to a network where the configured Active Directory domain is not available."
+    },
+    {
+      "name": "gotNewCredential",
+      "details": "The user has acquired a new Kerberos TGT."
+    },
+    {
+      "name": "passwordChangedWithPasswordSync",
+      "details": "The user has changed the Active Directory password, and the local password has been updated to match the new Active Directory password."
+    }
+  ]
+}
