@@ -23,7 +23,7 @@ struct DomainsCommand: ParsableCommand {
     func run() throws {
         if let domain = domain {
             print("[Reference]: \(domain.referenceURL.absoluteString)\n")
-            domain.notification.forEach { (notification) in
+            domain.notifications.forEach { (notification) in
                 print("❖ \(notification.name)")
                 print("  \(notification.details)\n")
             }

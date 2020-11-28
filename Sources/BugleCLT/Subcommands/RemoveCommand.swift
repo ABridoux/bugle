@@ -15,7 +15,7 @@ struct RemoveCommand: ParsableCommand {
 
     // MARK: - Properties
 
-    @Option(name: [.short, .long], help: "A specific domain to register the  notification", completion: .custom(listDomainNames))
+    @Option(name: [.short, .long], help: "A specific domain holding the reverse DNS of the notification", completion: .custom(listDomainNames))
     var domain: Domain?
 
     @Option(name: [.short], help: "The notification that is observed", completion: .custom(listDomainNotifications))
