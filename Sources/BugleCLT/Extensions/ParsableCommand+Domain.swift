@@ -32,6 +32,6 @@ extension ParsableCommand {
             return []
         }
 
-        return domain.notification.map(\.name)
+        return domain.notifications.map(\.name)
     }
 }

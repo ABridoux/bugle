@@ -34,13 +34,45 @@ It's possible to edit a Plist file manually. Otherwise, **Bugle** offers two com
 #### Add an observer
 
 ```bash
-bugle add -n UserDidFallAsleep -s /Users/homer/Desktop/ring.sh -f UserObservations.plist
+bugle add \
+    -n UserDidFallAsleep \
+    -s /Users/homer/Desktop/ring.sh \
+    -f UserObservations.plist
 ```
+
+##### Registered domains
+
+If the notification domain is registered, it's possible to specify the domain and rely on [auto-completion](#completion). The list of registered domains can be found [here](#domains). For instance with the registered domain "kerberos".
+
+```bash
+bugle add \
+    -d kerberos -n ADPasswordChanged \
+    -s /Users/homer/Desktop/ring.sh \
+    -f KerberosObservations.plist
+```
+
+##### Script execution
+
+It is required to add a shebang at the beginning of the script file.
 
 #### Remove an observer
 
 ```bash
-bugle remove -n UserDidFallAsleep -s /Users/homer/Desktop/ring.sh -f UserObservations.plist
+bugle remove \
+    -n UserDidFallAsleep \
+    -s /Users/homer/Desktop/ring.sh \
+    -f UserObservations.plist
+```
+
+##### Registered domains
+
+If the notification domain is registered, it's possible to specify the domain and rely on [auto-completion](#completion). The list of registered domains can be found [here](#domains). For instance with the registered domain "kerberos".
+
+```bash
+bugle remove \
+    -d kerberos -n ADPasswordChanged \
+    -s /Users/homer/Desktop/ring.sh \
+    -f KerberosObservations.plist
 ```
 
 ### Listen
@@ -59,9 +91,13 @@ It's also possible to post notifications, whether it be to test the scripts exec
 bugle post -n UserDidFallAsleep
 ```
 
-## Script
+##### Registered domains
 
-It is required to add a shebang at the beginning of the script file.
+If the notification domain is registered, it's possible to specify the domain and rely on [auto-completion](#completion). The list of registered domains can be found [here](#domains). For instance with the registered domain "kerberos".
+
+```bash
+bugle post -d kerberos -n ADPasswordChanged
+```
 
 ## Install
 
@@ -76,3 +112,61 @@ rm bugle.zip && \
 install bugle /usr/local/bin && \
 rm bugle
 ```
+
+### Completion
+
+You can install the completion for **Bugle** by running `bugle install-completion-script`. You might have to source again your shell file or to restart the terminal.
+
+If the completion script does not install properly, you can try to do it manually with with the command `bugle --generate-completion-script` by following this [guide](https://github.com/apple/swift-argument-parser/blob/main/Documentation/07%20Completion%20Scripts.md).
+
+## Domains
+
+**Bugle** tries to offer a less error-prone way to register to notifications. This is done by adding a domain to the register. This allows to specify a notification with auto-completion and remove the need to write the reverse DNS each time. You can find the list of registered domains by running `bugle domain` and the domain notification name and details with 
+
+```bash
+bugle domain [domain name]
+```
+
+### Registering a domain
+**Bugle** is open-source, and anyone is welcome to offer a new domain record. This is done by providing a JSON file in the folder */Sources/Bugle/Resources/DomainRecords*. This JSON file will hold 3 pieces of informations:
+- a reference URL where the notifications list for the domain can be found
+- the reverse DNS of the domain (e.g. "com.apple.KerberosPlugin")
+- an array of the domain notifications. Each notification is a dictionary with the notification name and the details about when it is sent.
+
+Here is an example JSON file for Kerberos (not exhaustive).
+
+```json
+{
+  "reverseDNS": "com.apple.KerberosPlugin",
+  "referenceURL": "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf",
+  "notifications": [
+    {
+      "name": "ConnectionCompleted",
+      "details": "The Kerberos SSO extension has run its connection process."
+    },
+    {
+      "name": "ADPasswordChanged",
+      "details": "The user has changed the Active Directory password with the extension"
+    }
+  ]
+}
+```
+
+### New domain record process
+
+To add a new domain record, here is a process that you can follow.
+
+1. Fork the project (upper-right corner button)
+2. Create a new branch from "develop", naming it "feature/domain-record-[domain name]"
+3. Add the JSON file in the folder */Sources/Bugle/Resources/DomainRecords*
+4. Commit your changes and push them to your forked repository
+5. Open a merge-request from your branch to "Bugle/develop" and assign [ABridoux](https://github.com/ABridoux) or tag me in the merge request comment.
+
+From here, I'll take a look as soon as I can and merge your branch if the JSON has no errors. Otherwise, maybe I'll ask to make some modifications.
+If you prefer, you can also [send me an email](mailto:alexis1bridoux@gmail.com) with the JSON file. I'll add it to the records.
+
+The added domain record will then be bundled in the next release.
+
+### Registered domains
+
+- [Apple Kerberos Plugin](https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf)

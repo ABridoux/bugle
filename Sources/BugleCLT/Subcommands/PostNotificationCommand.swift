@@ -14,10 +14,10 @@ struct PostNotificationCommand: ParsableCommand {
 
     // MARK: - Properties
 
-    @Option(name: [.short, .long], help: "A specific domain to register the  notification", completion: .custom(listDomainNames))
+    @Option(name: [.short, .long], help: "A specific domain holding the reverse DNS of the notification", completion: .custom(listDomainNames))
     var domain: Domain?
 
-    @Option(name: [.short], help: "The notification to observe", completion: .custom(listDomainNotifications))
+    @Option(name: [.short], help: "The notification to post", completion: .custom(listDomainNotifications))
     var notificationName: String
 
     // MARK: - Functions

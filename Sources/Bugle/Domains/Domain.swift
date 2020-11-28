@@ -11,9 +11,15 @@ public struct Domain: Decodable {
 
     public let referenceURL: URL
     public let reverseDNS: String
-    public let notification: Set<NotficationRecord>
+    public let notifications: Set<NotficationRecord>
 
     // MARK: - Initialisation
+
+    init(referenceURL: URL, reverseDNS: String, notifications: Set<NotficationRecord>) {
+        self.referenceURL = referenceURL
+        self.reverseDNS = reverseDNS
+        self.notifications = notifications
+    }
 
     public init?(domainName: String) {
         guard
@@ -28,7 +34,7 @@ public struct Domain: Decodable {
     // MARK: - Functions
 
     public func notification(for name: String) throws -> String {
-        guard notification.map(\.name).contains(name) else {
+        guard notifications.map(\.name).contains(name) else {
             throw BugleError.unregisteredDomainNotification(domain: reverseDNS, notification: name)
         }
         return "\(reverseDNS).\(name)"

@@ -7,15 +7,20 @@ import Foundation
 import Bugle
 import ArgumentParser
 
+private let discussion =
+"""
+Create the file if it does not exist at the path.
+"""
+
 struct AddCommand: ParsableCommand {
 
     // MARK: - Constants
 
-    static let configuration = CommandConfiguration(commandName: "add", abstract: "Add an observation to a file")
+    static let configuration = CommandConfiguration(commandName: "add", abstract: "Add an observation to a file", discussion: discussion)
 
     // MARK: - Properties
 
-    @Option(name: [.short, .long], help: "A specific domain to register the  notification", completion: .custom(listDomainNames))
+    @Option(name: [.short, .long], help: "A specific domain holding the reverse DNS of the notification", completion: .custom(listDomainNames))
     var domain: Domain?
 
     @Option(name: [.short], help: "The notification to observe", completion: .custom(listDomainNotifications))

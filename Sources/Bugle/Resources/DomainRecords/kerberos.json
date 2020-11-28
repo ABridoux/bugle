@@ -1,7 +1,7 @@
 {
   "reverseDNS": "com.apple.KerberosPlugin",
   "referenceURL": "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf",
-  "notification": [
+  "notifications": [
     {
       "name": "ConnectionCompleted",
       "details": "The Kerberos SSO extension has run its connection process."
