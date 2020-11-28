@@ -15,5 +15,6 @@ struct BugleCommand: ParsableCommand {
                                                                   ListenCommand.self,
                                                                   AddCommand.self,
                                                                   RemoveCommand.self,
+                                                                  DomainsCommand.self,
                                                                   InstallCompletionScriptCommand.self])
 }
