@@ -1,0 +1,12 @@
+{
+  "reverseDNS": "com.apple.KerberosPlugin",
+  "notificationNames": [
+    "ConnectionCompleted",
+    "ADPasswordChanged",
+    "LocalPasswordSynced",
+    "InternalNetworkAvailable",
+    "InternalNetworkNotAvailable",
+    "gotNewCredential",
+    "passwordChangedWithPasswordSync"
+  ]
+}

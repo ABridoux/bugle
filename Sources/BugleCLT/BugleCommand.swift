@@ -14,5 +14,6 @@ struct BugleCommand: ParsableCommand {
                                                     subcommands: [PostNotificationCommand.self,
                                                                   ListenCommand.self,
                                                                   AddCommand.self,
-                                                                  RemoveCommand.self])
+                                                                  RemoveCommand.self,
+                                                                  InstallCompletionScriptCommand.self])
 }
