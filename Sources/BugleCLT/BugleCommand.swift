@@ -6,6 +6,7 @@
 import Bugle
 import ArgumentParser
 
+@main
 struct BugleCommand: ParsableCommand {
 
     static let configuration = CommandConfiguration(
