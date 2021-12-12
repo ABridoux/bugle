@@ -12,7 +12,7 @@ struct BugleCommand: ParsableCommand {
     static let configuration = CommandConfiguration(
         commandName: "bugle",
         abstract: "A tool to post and listen to distributed notifications to execute scripts",
-        version: Version.current,
+        version: BugleVersion.current,
         subcommands: [
             PostNotificationCommand.self,
             ListenCommand.self,
