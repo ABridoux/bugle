@@ -5,6 +5,7 @@
 
 import Foundation
 
+/// A domain to send and receive notifications
 public struct Domain {
 
     public let name: String
