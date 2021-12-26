@@ -152,6 +152,7 @@ public static let kerberos = Domain(
             details: "The user has changed the Active Directory password with the extension"
         )
     ]
+)
 ```
 
 ### New domain record process
