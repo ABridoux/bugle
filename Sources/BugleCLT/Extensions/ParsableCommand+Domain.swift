@@ -1,6 +1,6 @@
 //
 // Bugle
-// Copyright (c) Alexis Bridoux 2020
+// Copyright (c) Alexis Bridoux 2020-present
 // MIT license, see LICENSE file for details
 
 import ArgumentParser
@@ -19,7 +19,7 @@ extension ParsableCommand {
 
     /// List all the registered domains
     static func listDomainNames(_ arguments: [String]) -> [String] {
-        DomainRecord.recordsList.map(\.name)
+        Domain.allCases.map(\.name)
     }
 
     /// Custom completion functions for domain notification names

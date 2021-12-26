@@ -62,7 +62,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "listen &quot;/Users/alexisbridoux/Desktop/obs.plist&quot;"
+            argument = "domains kerberos"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
