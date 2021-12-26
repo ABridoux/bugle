@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file. `Bugle` adheres to [Semantic Versioning](http://semver.org).
 
 ---
+## [0.2.1](https://github.com/ABridoux/bugle/tree/0.2.0) (28/11/2020)
+
+### Fixed
+- Domains management for the command-line tool is fixed and uses Swift declarations rather than JSON [#13]
+
 ## [0.2.0](https://github.com/ABridoux/bugle/tree/0.2.0) (28/11/2020)
 
 ### Added

@@ -1,6 +1,6 @@
 //
 // Bugle
-// Copyright (c) Alexis Bridoux 2020
+// Copyright (c) Alexis Bridoux 2020-present
 // MIT license, see LICENSE file for details
 
 import Bugle

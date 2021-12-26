@@ -1,6 +1,6 @@
 //
 // Bugle
-// Copyright (c) Alexis Bridoux 2020
+// Copyright (c) Alexis Bridoux 2020-present
 // MIT license, see LICENSE file for details
 
 import Foundation
@@ -28,7 +28,10 @@ struct DomainsCommand: ParsableCommand {
                 print("  \(notification.details)\n")
             }
         } else {
-            DomainRecord.recordsList.forEach { print($0.name) }
+            Domain.allCases
+                .lazy
+                .map(\.name)
+                .forEach { print($0) }
         }
     }
 }
