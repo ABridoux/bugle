@@ -11,7 +11,7 @@ public struct Domain {
     public let name: String
     public let referenceURL: URL
     public let reverseDNS: String
-    public let notifications: Set<NotificationRecord>
+    public let notifications: Set<Notification>
 }
 
 // MARK: - Init

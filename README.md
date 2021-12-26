@@ -128,28 +128,30 @@ bugle domain [domain name]
 ```
 
 ### Registering a domain
-**Bugle** is open-source, and anyone is welcome to offer a new domain record. This is done by providing a JSON file in the folder */Sources/Bugle/Resources/DomainRecords*. This JSON file will hold 3 pieces of informations:
+**Bugle** is open-source, and anyone is welcome to offer a new domain record. This is done by providing a Swift file in the *Declarations* folder. This file will hold 3 pieces of information:
 - a reference URL where the notifications list for the domain can be found
 - the reverse DNS of the domain (e.g. "com.apple.KerberosPlugin")
 - an array of the domain notifications. Each notification is a dictionary with the notification name and the details about when it is sent.
 
-Here is an example JSON file for Kerberos (not exhaustive).
+To hold those information, a `Domain` should be declared as a `static Domain` property in a `Domain` extension. The compiler will ensure no property is forgotten.  
+ 
+Here is an example Swift file used for Kerberos (not exhaustive).
 
-```json
-{
-  "reverseDNS": "com.apple.KerberosPlugin",
-  "referenceURL": "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf",
-  "notifications": [
-    {
-      "name": "ConnectionCompleted",
-      "details": "The Kerberos SSO extension has run its connection process."
-    },
-    {
-      "name": "ADPasswordChanged",
-      "details": "The user has changed the Active Directory password with the extension"
-    }
-  ]
-}
+```swift
+public static let kerberos = Domain(
+    name: "kerberos",
+    referenceURL: URL(string: "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf")!,
+    reverseDNS: "com.apple.KerberosPlugin",
+    notifications: [
+        Notification(
+            name: "ConnectionCompleted",
+            details: "The Kerberos SSO extension has run its connection process."
+        ),
+        Notification(
+            name: "ADPasswordChanged",
+            details: "The user has changed the Active Directory password with the extension"
+        )
+    ]
 ```
 
 ### New domain record process
@@ -158,7 +160,7 @@ To add a new domain record, here is a process that you can follow.
 
 1. Fork the project (upper-right corner button)
 2. Create a new branch from "develop", naming it "feature/domain-record-[domain name]"
-3. Add the JSON file in the folder */Sources/Bugle/Resources/DomainRecords*
+3. Add the Swift file in the folder *Sources/Bugle/Declarations*
 4. Commit your changes and push them to your forked repository
 5. Open a merge-request from your branch to "Bugle/develop" and assign [ABridoux](https://github.com/ABridoux) or tag me in the merge request comment.
 

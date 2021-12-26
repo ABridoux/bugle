@@ -6,7 +6,7 @@
 extension Domain {
 
     /// A notification in a specific domain that can be sent or received
-    public struct NotificationRecord: Hashable {
+    public struct Notification: Hashable {
         public let name: String
         public let details: String
     }

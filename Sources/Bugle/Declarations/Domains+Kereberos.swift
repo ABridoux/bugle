@@ -12,30 +12,30 @@ extension Domain {
         referenceURL: URL(string: "https://www.apple.com/business/docs/site/Kerberos_Single_Sign_on_Extension_User_Guide.pdf")!,
         reverseDNS: "com.apple.KerberosPlugin",
         notifications: [
-            NotificationRecord(
+            Notification(
                 name: "ConnectionCompleted",
                 details: "The Kerberos SSO extension has run its connection process."
             ),
-            NotificationRecord(
+            Notification(
                 name: "ADPasswordChanged",
                 details: "The user has changed the Active Directory password with the extension"
             ),
-            NotificationRecord(
+            Notification(
                 name: "LocalPasswordSynced",
                 details: "The user has brought the Active Directory and local passwords in sync."
             ),
-            NotificationRecord(
+            Notification(
                 name: "InternalNetworkAvailable",
                 details: "The user has connected to a network where the configured Active Directory domain is available."),
-            NotificationRecord(
+            Notification(
                 name: "InternalNetworkNotAvailable",
                 details: "The user has connected to a network where the configured Active Directory domain is not available."
             ),
-            NotificationRecord(
+            Notification(
                 name: "gotNewCredential",
                 details: "The user has acquired a new Kerberos TGT."
             ),
-            NotificationRecord(
+            Notification(
                 name: "passwordChangedWithPasswordSync",
                 details: "The user has changed the Active Directory password, and the local password has been updated to match the new Active Directory password."
             )
