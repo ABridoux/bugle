@@ -28,7 +28,10 @@ struct DomainsCommand: ParsableCommand {
                 print("  \(notification.details)\n")
             }
         } else {
-            DomainRecord.recordsList.forEach { print($0.name) }
+            Domain.allCases
+                .lazy
+                .map(\.name)
+                .forEach { print($0) }
         }
     }
 }
